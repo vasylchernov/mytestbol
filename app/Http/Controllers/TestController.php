@@ -7,6 +7,11 @@ use App\Jobs\ProcessSomething;
 
 class TestController extends Controller
 {
+    public function tail()
+    {
+        return view('test.tailwindcss'/*, compact('')*/);
+    }
+
     public function process()
     {
         // Dispatch the job to the queue
