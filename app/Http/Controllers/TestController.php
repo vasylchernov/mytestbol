@@ -20,7 +20,7 @@ class TestController extends Controller
         $p1 = 'p1_val';
 
         $m = new MyTest();
-        $m->created = 't1_' . time();
+        $m->example = 't1_' . time();
         $m->save();
         $data = $m::all()->values();
 

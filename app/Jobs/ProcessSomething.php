@@ -24,7 +24,7 @@ class ProcessSomething implements ShouldQueue
     public function handle(): void
     {
         $m = new MyTest();
-        $m->created = 'from_queue_' . time();
+        $m->example = 'from_queue_' . time();
         $m->save();
     }
 }
