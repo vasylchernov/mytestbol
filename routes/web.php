@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 
 Route::get('/run', [TestController::class, 'run'])->name('run');
-Route::get('/process', [TestController::class, 'process'])->name('process');
+Route::get('/proc', [TestController::class, 'process'])->name('proc');
 
 Route::post('sendform', function () {
     return 'form send';

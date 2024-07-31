@@ -23,8 +23,9 @@ class ProcessSomething implements ShouldQueue
      */
     public function handle(): void
     {
-        $m = new MyTest();
-        $m->example = 'from_queue_' . time();
-        $m->save();
+//        $m = new MyTest();
+//        $m->example = 'from_queue_' . time();
+//        $m->save();
+        MyTest::create(['example' => 'fq_' . time()]);
     }
 }

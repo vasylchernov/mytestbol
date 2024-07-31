@@ -2,7 +2,7 @@
 
 
     <div >
-        <form action="{{ route('process') }}" method="GET">
+        <form action="{{ route('proc') }}" method="GET">
             @csrf
             <input type="submit" value="process" />
         </form>

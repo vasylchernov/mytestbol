@@ -9,5 +9,5 @@ class MyTest extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['created'];
+    protected $fillable = ['example'];
 }

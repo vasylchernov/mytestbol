@@ -19,10 +19,15 @@ class TestController extends Controller
     public function run() {
         $p1 = 'p1_val';
 
-        $m = new MyTest();
-        $m->example = 't1_' . time();
-        $m->save();
-        $data = $m::all()->values();
+        MyTest::create(['example' => 'manually_' . time()]);
+        $data = MyTest::all()->values();
+        $tmp = [];
+
+        foreach ($data as $value) {
+            array_push($tmp, $value->example);
+        }
+
+        return print_r($tmp, 1);
 
         return view('test.test', compact('p1', 'data'));
     }
