@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+
+Route::get('/run', [TestController::class, 'run'])->name('run');
+Route::get('/process', [TestController::class, 'process'])->name('process');
 
 Route::post('sendform', function () {
     return 'form send';
