@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('my_tests', function (Blueprint $table) {
-            $table->string('created')->default('');
-        });
+        Schema::dropIfExists('my_tests');
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down(): void
     {
-        Schema::table('order_has_glassrack', function (Blueprint $table) {
-            $table->dropColumn('created');
+        // Define the schema to recreate the table if needed
+        Schema::create('my_tests', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 };
