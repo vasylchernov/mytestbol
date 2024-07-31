@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('my_tests', function (Blueprint $table) {
+        Schema::create('my_tests', function (Blueprint $table) {
+            $table->id();
+            $table->string('created')->default('');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::table('my_tests', function (Blueprint $table) {
-            $table->dropColumn(['created_at', 'updated_at']); // Drops the 'created_at' and 'updated_at' columns
-        });
+        Schema::dropIfExists('my_tests');
     }
 };
