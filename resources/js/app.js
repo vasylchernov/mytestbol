@@ -6,8 +6,6 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-function l() {
+window.l = function () {
     console.log.apply(console, arguments);
 }
-
-l(1,2,3,4);
