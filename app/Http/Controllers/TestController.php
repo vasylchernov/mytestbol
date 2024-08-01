@@ -7,6 +7,10 @@ use App\Jobs\ProcessSomething;
 
 class TestController extends Controller
 {
+    public function alpinejs_page()
+    {
+        return view('test.alp'/*, compact('')*/);
+    }
     public function tail()
     {
         return view('test.tailwindcss'/*, compact('')*/);
