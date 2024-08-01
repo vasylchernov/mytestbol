@@ -7,6 +7,11 @@ use App\Jobs\ProcessSomething;
 
 class TestController extends Controller
 {
+    public function tone()
+    {
+        return 'tone_command';
+//        return view('test.tailwindcss'/*, compact('')*/);
+    }
     public function tail()
     {
         return view('test.tailwindcss'/*, compact('')*/);
