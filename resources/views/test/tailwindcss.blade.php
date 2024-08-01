@@ -1,6 +1,40 @@
 <x-app-layout>
 
-    <div class="p-6 max-w-xl mx-auto my_dark"><br><br>
+    <div class="p-6 max-w-xl mx-auto my_dark dark"><br><br>
+
+        <x-mail-layout> content_from_slot </x-mail-layout>
+
+        <br><br>
+
+        <div>
+            <p class="text-xs text-gray">simple text example</p>
+            <p class="text-sm text-gray">simple text example</p>
+            <p class="text-base text-gray">simple text example</p>
+            <p class="text-lg text-gray">simple text example</p>
+            <p class="text-4xl text-my_gray font-my_sans">simple text example - 4xl</p>
+            <p class="text-6xl text-my_gray font-my_serif">simple text example - 6xl</p>
+            <p class="text-8xl text-my_gray">simple text example - 8xl</p>
+        </div>
+
+        <br><br>
+
+        <div class="dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+            <div>
+            <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
+            </span>
+            </div>
+            <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
+            <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm font-bold">
+                <span class="text-primary-500">The Zero Gravity</span> <span class="text-transparent">Pen can be used</span> to write in any orientation, including upside-down. It even works in outer space.
+            </p>
+        </div>
+
+        <br><br>
+
+        <div class="text-center sm:text-left dark:bg-slate-800">example</div>
+
+        <br><br>
 
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="md:flex">
@@ -11,7 +45,7 @@
                 <div class="p-8">
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Company retreats</div>
                     <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Incredible accommodation for your team</a>
-                    <p class="mt-2 text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
+                    <p class="mt-2 text-slate-500">Looking to <span class="sm:uppercase 2xl:text-purple-600">take your team</span> away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
                 </div>
             </div>
         </div>
