@@ -13,4 +13,14 @@
             <input class="mt-4 py-2 px-4 rounded-md text-white bg-purple-600" type="submit">
         </div>
     </form>
+
+    <br><br><br>
+
+    <h1>All Media</h1>
+
+    <br>
+
+
+
+
 </x-app-layout>

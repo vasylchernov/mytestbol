@@ -12,8 +12,8 @@ use App\Models\Article;
 //        ->toMediaCollection();
 //});
 
+Route::get('/show_files', [ArticleController::class, 'showFiles'])->name('show_files');
 Route::post('/save_file', [ArticleController::class, 'saveFile'])->name('save_file');
-
 Route::get('/get_form', [ArticleController::class, 'getForm'])->name('get_form');
 //Route::get('/med', [TestController::class, 'test'])->name('med');
 Route::get('/alp', [TestController::class, 'alpinejs_page'])->name('alp');
