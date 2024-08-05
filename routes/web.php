@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NotificationController;
 
+Route::get('/notify', [NotificationController::class, 'sendNotification'])->name('notify');
 Route::get('/mail', [MailController::class, 'mySendMail'])->name('mail');
 Route::get('/show_files', [ArticleController::class, 'showFiles'])->name('show_files');
 Route::post('/save_file', [ArticleController::class, 'saveFile'])->name('save_file');
