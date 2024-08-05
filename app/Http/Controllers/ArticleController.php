@@ -11,14 +11,15 @@ class ArticleController extends Controller
     {
         $data = Article::last();
         $arr = $data->getMedia()->toArray();
+        $url = '';
 
         if (array_key_exists(0, $arr)) {
-            dd( $data->getMedia()[0]->getUrl() );
+            $url = $data->getMedia()[0]->getUrl();
         } else {
-            dd(222);
+            $url = 'nothing to show';
         }
 
-        return view('article.create');
+        return view('article.create', compact('url'));
     }
 
     public function saveFile()

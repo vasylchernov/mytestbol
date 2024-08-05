@@ -4,14 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ArticleController;
-use App\Models\Article;
+use App\Http\Controllers\MailController;
 
-//Route::get('add-media-to-library', function () {
-//    Article::create()
-//        ->addMedia( asset('storage/images/lib.jpg') )
-//        ->toMediaCollection();
-//});
-
+Route::get('/mail', [MailController::class, 'mySendMail'])->name('mail');
 Route::get('/show_files', [ArticleController::class, 'showFiles'])->name('show_files');
 Route::post('/save_file', [ArticleController::class, 'saveFile'])->name('save_file');
 Route::get('/get_form', [ArticleController::class, 'getForm'])->name('get_form');

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\MyTest;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\MyTestObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        MyTest::observe(MyTestObserver::class);
     }
 }
