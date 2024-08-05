@@ -7,6 +7,10 @@ use App\Jobs\ProcessSomething;
 
 class TestController extends Controller
 {
+    public function test()
+    {
+        return 'test_route';
+    }
     public function alpinejs_page()
     {
         return view('test.alp'/*, compact('')*/);

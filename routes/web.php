@@ -3,8 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 
-Route::get('/alp', [TestController::class, 'alpinejs_page'])->name('');
+//Route::get('add-media-to-library', function () {
+//    Article::create()
+//        ->addMedia( asset('storage/images/lib.jpg') )
+//        ->toMediaCollection();
+//});
+
+Route::post('/save_file', [ArticleController::class, 'saveFile'])->name('save_file');
+
+Route::get('/get_form', [ArticleController::class, 'getForm'])->name('get_form');
+//Route::get('/med', [TestController::class, 'test'])->name('med');
+Route::get('/alp', [TestController::class, 'alpinejs_page'])->name('alp');
 Route::get('/tail', [TestController::class, 'tail'])->name('tail');
 Route::get('/run', [TestController::class, 'run'])->name('run');
 Route::get('/proc', [TestController::class, 'process'])->name('proc');
