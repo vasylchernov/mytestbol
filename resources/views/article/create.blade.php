@@ -16,11 +16,10 @@
 
     <br><br><br>
 
-    <h1>All Media</h1>
+    <h1>All Media:</h1>
 
     <br>
 
-
-
+    {{ $url }}
 
 </x-app-layout>
