@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\MyTest;
 use App\Jobs\ProcessSomething;
+use App\Models\Post;
+use Meilisearch\Client;
 
+//return env('BG', 'BG_def') . '<br> test_route';
 class TestController extends Controller
 {
-    public function test()
+    public function test(): string
     {
-        return 'test_route';
+//        $client = new Client('http://127.0.0.1:7700', 'masterkey');
+//        $client->createIndex('dg_posts', ['primaryKey' => 'id']);
+//        $indexes = $client->getIndexes();
+//        dd($indexes);
+//        $posts = Post::search('Your search term')->get();
+//        dd($posts);
+        return env('BG', 'BG_def') . '<br> test_route';
     }
     public function alpinejs_page()
     {
