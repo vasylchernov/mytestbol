@@ -28,11 +28,12 @@ class SendWelcomeEmails extends Command
      */
     public function handle(): int
     {
-        $this->info('Sending welcome emails...');
+//        $this->info('Sending welcome emails...');
 
-        MyTest::create(['example' => 'manually_through kernel_' . time()]);
+//        MyTest::create(['example' => '08_manually_through kernel_' . time()]);
+        MyTest::create(['example' => '08_through kernel_' . time()]);
 
-        $this->info('Sending welcome emails -> finished');
+//        $this->info('Sending welcome emails -> finished');
 
         return 0;
     }

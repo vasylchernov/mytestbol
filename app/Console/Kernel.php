@@ -7,11 +7,12 @@ use Illuminate\Console\Scheduling\Schedule;
 
 class Kernel extends ConsoleKernel
 {
+    protected $commands = [
+        \App\Console\Commands\SendWelcomeEmails::class,
+    ];
     protected function schedule(Schedule $schedule): void
     {
-        // Define scheduled tasks here
-        // Example: $schedule->command('email:send-welcome')->daily();
-        $schedule->command('my_command_email:send-welcome')->everyFifteenSeconds();
+        $schedule->command('my_command_email:send-welcome')->everyMinute();
     }
 
     protected function commands(): void

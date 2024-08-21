@@ -9,6 +9,16 @@ use Meilisearch\Client;
 
 class SearchController extends Controller
 {
+    public function meilisearch_cache(): string
+    {
+        $client = new Client('http://127.0.0.1:7700', 'masterkey');
+        $client->createIndex('dg_posts', ['primaryKey' => 'id']);
+        $indexes = $client->getIndexes();
+        dd($indexes);
+//        $posts = Post::search('Your search term')->get();
+//        dd($posts);
+        return env('BG', 'BG_def') . '<br> test_route';
+    }
     public function searchResult(Request $request) {
 //        $client = new Client('http://127.0.0.1:7700', 'your_meilisearch_api_key');
 //        $client->createIndex('dg_posts', ['primaryKey' => 'id']);
