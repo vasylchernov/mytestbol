@@ -9,6 +9,7 @@ use App\Models\MyTest;
 use App\Jobs\ProcessSomething;
 use App\Models\Post;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Meilisearch\Client;
 use Psy\Util\Str;
@@ -17,6 +18,24 @@ use App\Facades\Product as ProductFacade;
 //return env('BG', 'BG_def') . '<br> test_route';
 class TestController extends Controller
 {
+    public function groupsStub(int $id = 0): string
+    {
+        $data = collect('groupsStub');
+        $this->request->session()->flash('page', '___single product page___');
+        return view('test.stub', compact('data'));
+    }
+    public function singleProduct(int $id): string
+    {
+        $data = ProductFacade::getProductName($id);
+        $this->request->session()->flash('page', '___single product page___');
+        return view('test.stub', compact('data'));
+    }
+    public function productsList(): string
+    {
+        $data = ProductFacade::getAllNames();
+        $this->request->session()->flash('page', '___products list page___');
+        return view('test.stub', compact('data'));
+    }
     public function tt(): string
     {
         return 'tt';
@@ -66,10 +85,6 @@ class TestController extends Controller
         $img = 'storage/images/lib.jpg';
 //        dd($products);
         return view('test.home', compact('products', 'p2', 'titleMyComp', 'img'));
-    }
-    public function __construct()
-    {
-        echo '<script>document.querySelector("html").style.backgroundColor = "#ccc"</script>';
     }
 
     public function polymorphicShow(): string
@@ -135,5 +150,13 @@ class TestController extends Controller
         dd($tmp);
 
         return view('test.test', compact('p1', 'data'));
+    }
+
+    private Request $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+        echo '<script>document.querySelector("html").style.backgroundColor = "#ccc"</script>';
     }
 }
