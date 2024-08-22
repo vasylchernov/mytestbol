@@ -7,6 +7,22 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PaymentController;
+
+Route::get('/mid', function () {
+    return 'Welcome Admin!';
+})->middleware('example');
+
+Route::middleware('example')->group(function () {
+    Route::get('/tt', [TestController::class, 'tt'])->name('tt');
+    Route::get('/lw', [TestController::class, 'lw'])->name('lw');
+    Route::get('/facade', [TestController::class, 'facade'])->name('facade');
+});
+
+Route::get('/pay', [PaymentController::class, 'showPaymentPage'])->name('pay');
+Route::get('/payment', [PaymentController::class, 'initiatePayment'])->name('payment.initiate');
+Route::get('/payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+Route::post('/payment/notify', [PaymentController::class, 'paymentNotify'])->name('payment.notify');
 
 Route::get('/ev', [TestController::class, 'createEvent'])->name('ev');
 Route::get('/test2', [TestController::class, 'test2'])->name('test2');

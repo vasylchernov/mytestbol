@@ -12,10 +12,36 @@ use App\Models\Product;
 use Illuminate\View\View;
 use Meilisearch\Client;
 use Psy\Util\Str;
+use App\Facades\Product as ProductFacade;
 
 //return env('BG', 'BG_def') . '<br> test_route';
 class TestController extends Controller
 {
+    public function tt(): string
+    {
+        return 'tt';
+    }
+    public function pay(): View
+    {
+        return view('test.lw'/*, compact('html')*/);
+    }
+    public function lw(): View
+    {
+        $data = [];
+//        $html = \Livewire\Livewire::mount('example-component', [])->html();
+        $c = \Livewire\Livewire::mount('example-component', ['example' => 'def_example']);
+        $html = $c;//->output();
+
+        return view('test.lw', compact('html'));
+    }
+    public function facade(): View
+    {
+        $data = [];
+        $pf = ProductFacade::test2();
+
+        dd($pf);
+        return view('test.test-2', compact('data'));
+    }
     public function createEvent(): View
     {
         $product = Product::create(['name' => 'Nokia-1', 'price' => 100.1, 'assortment_id' => (Assortment::where('id', 2)->get())[0]->id]);
@@ -28,7 +54,7 @@ class TestController extends Controller
     public function test2(): View
     {
 //        $data = collect(Product::all())->filter(fn($data) => $data);
-        $data = collect(Product::all())->filter(fn($data) => $data->price > 998.00)->map(fn($data) => $data->name);
+        $data = collect(Product::all())->filter(fn($data) => $data->price > 55)->map(fn($data) => $data->name);
 //        dd($data);
         return view('test.test-2', compact('data'));
     }
@@ -74,6 +100,7 @@ class TestController extends Controller
     }
     public function test(): string
     {
+        $data = [];
         return '<br> test_route';
     }
     public function alpinejs_page(): View

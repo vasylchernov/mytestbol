@@ -15,6 +15,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script>document.querySelector("html").style.backgroundColor = "#ccc"</script>
+
+        @livewireStyles
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -34,5 +37,7 @@
                 {{ $slot }}
             </main>
         </div>
+
+    @livewireScripts
     </body>
 </html>
