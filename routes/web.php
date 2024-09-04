@@ -9,6 +9,9 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
 
+Route::get('/t3', [TestController::class, 't3'])->name('t3');
+Route::get('/customMethod', [TestController::class, 'customMethod'])->name('customMethod');
+Route::get('/ctx', [TestController::class, 'ctx'])->name('ctx');
 Route::get('/groups', [TestController::class, 'groupsStub'])->name('group-item');
 Route::get('/groups/{id}', [TestController::class, 'groupsStub'])->name('groups');
 Route::get('/products/{id}', [TestController::class, 'singleProduct'])->name('product-item');

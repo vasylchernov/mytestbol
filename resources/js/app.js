@@ -9,3 +9,5 @@ Alpine.start();
 window.l = function () {
     console.log.apply(console, arguments);
 }
+
+var l = window.l;

@@ -10,6 +10,7 @@ use App\Jobs\ProcessSomething;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Context;
 use Illuminate\View\View;
 use Meilisearch\Client;
 use Psy\Util\Str;
@@ -18,6 +19,26 @@ use App\Facades\Product as ProductFacade;
 //return env('BG', 'BG_def') . '<br> test_route';
 class TestController extends Controller
 {
+    public function t3(): View
+    {
+        $data = collect([1,2,3]);
+
+        return view('test.stub', compact('data'));
+    }
+    public function customMethod(): string
+    {
+//        $p = Product::withCheapestProduct()->get();
+        $data = Product::withCheapestProductSql()->get();
+
+        return view('test.stub', compact('data'));
+    }
+    public function ctx(): string
+    {
+        Context::add('my', "[1,2,3,4,5]");
+        $data = collect(Context::all());
+        $this->request->session()->flash('page', '___single product page___');
+        return view('test.stub', compact('data'));
+    }
     public function groupsStub(int $id = 0): string
     {
         $data = collect('groupsStub');
