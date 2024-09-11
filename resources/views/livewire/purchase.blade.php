@@ -1,4 +1,17 @@
 <div>
+    <div x-data="{ isOpen: false }">
+        <input type="button" value="PUSH"
+               x-on:click="isOpen = !isOpen"
+{{--               class="text-black text-sm"--}}
+                x-bind:class="{ 'text-red-500 text-lg': isOpen, 'text-black text-sm': !isOpen }"
+               x-bind:aria-expanded="isOpen.toString()"
+        /> <br><br>
+        <ul x-show="isOpen" x-cloak>
+            <li>aaa</li>
+            <li>bbb</li>
+        </ul>
+    </div>
+    <br><br>
 
     <div>
         <button wire:click="loadData" class="px-4 py-2 bg-blue-500 text-white rounded">
@@ -14,13 +27,6 @@
         </svg>
     </div>
 
-    <!-- Data displayed after loading -->
-    <div wire:loading.remove class="mt-3">
-        @if($data)
-            <p>Data loaded: {{ $data }}</p>
-        @endif
-    </div>
-    <br><br>
 
     <div
         x-data="{ title: 'Hello' }"

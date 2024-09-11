@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\MyTestType;
 use App\Events\ProductAdded;
 use App\Models\Assortment;
 use App\Models\Category;
@@ -9,7 +10,9 @@ use App\Models\MyTest;
 use App\Jobs\ProcessSomething;
 use App\Models\Post;
 use App\Models\Product;
+use App\Traits\TraitExample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Context;
 use Illuminate\View\View;
 use Meilisearch\Client;
@@ -19,6 +22,35 @@ use App\Facades\Product as ProductFacade;
 //return env('BG', 'BG_def') . '<br> test_route';
 class TestController extends Controller
 {
+    use TraitExample;
+
+    public Collection $data;
+
+    public function t5(): View
+    {
+        $data = MyTest::all();
+        foreach ($data as $k => $v) {
+            $bool = $v['type'] instanceof MyTestType;
+            dd($v['type']);
+        }
+        dd($data);
+
+        return view('test.stub', compact('data'));
+    }
+    public function t4(): View
+    {
+        $data = $this->data;
+        $d = $data->each->sync();
+
+
+
+//        $data->each(fn ($it) => print ('-> ' . $it));
+        dd($d);
+
+        $this->getDataFromExample();
+
+        return view('test.stub', compact('data'));
+    }
     public function t3(): View
     {
         $data = collect([1,2,3]);
@@ -178,6 +210,7 @@ class TestController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
+        $this->data = collect([100,200,300]);
         echo '<script>document.querySelector("html").style.backgroundColor = "#ccc"</script>';
     }
 }

@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('my_command_email:send-welcome')->everyMinute();
+        $schedule->command('my_command:run')->everyMinute();
     }
 
     protected function commands(): void

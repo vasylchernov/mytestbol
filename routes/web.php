@@ -9,6 +9,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
 
+Route::get('/t5', [TestController::class, 't5'])->name('t5');
 Route::get('/t3', [TestController::class, 't3'])->name('t3');
 Route::get('/customMethod', [TestController::class, 'customMethod'])->name('customMethod');
 Route::get('/ctx', [TestController::class, 'ctx'])->name('ctx');
