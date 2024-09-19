@@ -205,6 +205,17 @@ class TestController extends Controller
         return view('test.test', compact('p1', 'data'));
     }
 
+    public function methodToTest(): string
+    {
+        $this->someOtherMethod();
+        return 'TestController::forTest';
+    }
+
+    public function someOtherMethod(): void
+    {
+        echo __METHOD__;
+    }
+
     private Request $request;
 
     public function __construct(Request $request)

@@ -10,6 +10,8 @@ class MyTest extends Model
 {
     use HasFactory;
 
+    public const TABLE = 'my_tests';
+
     protected $fillable = ['example'];
 
     protected $casts = ['type' => MyTestType::class];
