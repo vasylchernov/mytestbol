@@ -32,6 +32,10 @@ class TestController extends Controller
 
     public Collection $data;
 
+    public function testBranchBehavior(): string {
+        return 'main_branch';
+    }
+
     public function t15(): void {
         $myTest = MyTest::create(['example' => 'id_test']);
         dd([

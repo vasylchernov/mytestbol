@@ -10,6 +10,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ExactOnlineController;
 
+Route::get('/test_branch_behavior', [TestController::class, 'testBranchBehavior'])->name('test_branch_behavior');
 Route::get('/t15', [TestController::class, 't15'])->name('t15');
 Route::get('/t14', [TestController::class, 't14'])->name('t14');
 Route::get('/t11', [TestController::class, 't11'])->name('t11');
