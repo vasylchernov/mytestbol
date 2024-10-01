@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use App\Enums\MyTestType;
+use App\Enums\MyEnumType;
+use App\Observers\MyTestIDChangerObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[ObservedBy(MyTestIDChangerObserver::class)]
 class MyTest extends Model
 {
     use HasFactory;
@@ -14,5 +17,5 @@ class MyTest extends Model
 
     protected $fillable = ['example'];
 
-    protected $casts = ['type' => MyTestType::class];
+    protected $casts = ['type' => MyEnumType::class];
 }

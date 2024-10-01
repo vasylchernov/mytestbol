@@ -8,6 +8,17 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ExactOnlineController;
+
+Route::get('/t15', [TestController::class, 't15'])->name('t15');
+Route::get('/t14', [TestController::class, 't14'])->name('t14');
+Route::get('/t11', [TestController::class, 't11'])->name('t11');
+Route::post('/t10', [TestController::class, 't10'])->name('t10');
+Route::get('/t8', [TestController::class, 't8'])->name('t8');
+
+Route::get('/exact/connect', [ExactOnlineController::class, 'connect'])->name('exact.connect');
+Route::get('/exact/callback', [ExactOnlineController::class, 'callback'])->name('exact.callback');
+Route::get('/exact/getdivisions', [ExactOnlineController::class, 'getDivisions'])->name('exact.return');
 
 Route::get('/t7', function () {
     return 'route: t7';

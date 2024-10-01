@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\MyTestType;
+use App\Enums\InvoiceType;
+use App\Enums\InvoiceTypeString;
+use App\Enums\MyEnumType;
 use App\Events\ProductAdded;
 use App\Models\Assortment;
 use App\Models\Category;
@@ -14,23 +16,162 @@ use App\Traits\TraitExample;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Context;
+use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 use Meilisearch\Client;
 use Psy\Util\Str;
 use App\Facades\Product as ProductFacade;
 
 //return env('BG', 'BG_def') . '<br> test_route';
+
+class Invoice {}
+class Cashinvoice extends Invoice {}
 class TestController extends Controller
 {
     use TraitExample;
 
     public Collection $data;
 
+    public function t15(): void {
+        $myTest = MyTest::create(['example' => 'id_test']);
+        dd([
+            '$myTest',
+            $myTest
+        ]);
+    }
+
+    function gc(Invoice $inv) {
+        dd([
+            'inv',
+            basename( get_class( $inv ) )
+        ]);
+    }
+
+    public function t14(): string {
+
+        $ex = '';
+        foreach ([1,2,3] as $i) {
+            $params = [
+                'example' => 'from code - ' . $i
+            ];
+
+            $obj = MyTest::create($params);
+            $ex .= $obj->example . ', ';
+        }
+
+
+        return $ex;
+
+        $cInv = new Cashinvoice();
+        $inv = new Invoice();
+//        $type = InvoiceTypeString::INVOICE;
+        $type2 = InvoiceType::Invoice;
+
+        $this->gc($inv);
+
+//        echo $type->value == get_class($inv);
+
+//        echo basename( get_class($cInv) );
+        echo '<br>';
+//        echo get_class($inv);
+        echo match ($type2->name) {
+            basename( get_class($inv) ) => '111',
+            basename( get_class($cInv) ) => '222',
+            default => 'err',
+        };
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+//        match ($type) {
+//
+//        }
+
+        echo '<br><br><br><br>';
+//        if ($inv instanceof Invoice) {
+//            echo get_class($cInv);
+////        } elseif ($inv instanceof CashInvoice) {
+////            echo 'CashInvoice_type';
+////        }
+//
+//        echo '<br><br><br><br>';
+//        echo get_class($inv);
+//
+        echo '<br><br><br><br>';
+
+
+        return __CLASS__ . __METHOD__;
+    }
+
+    public function t12(): string {
+        return __CLASS__ . __METHOD__;
+    }
+
+    public function t11(Request $req): void {
+        $r = $req::create('http://mytestbol.test/t11', 'post', [
+            'k1' => 'v1',
+            'k2' => 'v2'
+        ]);
+
+        $r = Http::post(route('t10'), [
+            'k1' => 'v1',
+            'k2' => 'v2'
+        ]);
+        dd([
+            'r',
+            $r
+        ]);
+    }
+
+    public function t10(Request $req): string {
+        dd([
+            'request',
+            $req->query()
+        ]);
+
+        return __METHOD__;
+    }
+
+    public function t9(): string {
+        return __METHOD__;
+    }
+
+    public function t8(Request $request): string
+    {
+        $prop = MyEnumType::ex;
+
+        $age = 22;
+        return match ($age) {
+            $this->f3() => $this->f3Res(),
+            20 + 2 => '20 + 2',
+            $this->f1() => $this->f1Res(),
+            default => 'def',
+        };
+    }
+
+    function f1(): int {
+        echo 'f1() <br>';
+        return 22;
+    }
+    function f1Res(): string {
+        echo 'f1Res <br>';
+        return 'f1Res::22';
+    }
+    function f3(): int {
+        echo 'f3() <br>';
+        return 33;
+    }
+
+    function f3Res(): string {
+        echo 'f3Res() <br>';
+        return 'f3Res::22';
+    }
+
     public function t5(): View
     {
         $data = MyTest::all();
         foreach ($data as $k => $v) {
-            $bool = $v['type'] instanceof MyTestType;
+            $bool = $v['type'] instanceof MyEnumType;
             dd($v['type']);
         }
         dd($data);
