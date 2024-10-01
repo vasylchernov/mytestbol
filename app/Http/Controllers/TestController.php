@@ -32,6 +32,10 @@ class TestController extends Controller
 
     public Collection $data;
 
+    public function vchernov(): string {
+        return 'vchernov route';
+    }
+
     public function testBranchBehavior(): string {
         return 'main_branch';
     }
