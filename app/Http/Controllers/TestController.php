@@ -33,7 +33,7 @@ class TestController extends Controller
     public Collection $data;
 
     public function testBranchBehavior(): string {
-        return 'main_branch';
+        return 'test_branch_behavior';
     }
 
     public function t15(): void {
