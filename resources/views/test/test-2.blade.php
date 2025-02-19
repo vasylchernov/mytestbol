@@ -15,6 +15,7 @@
 
     <div class="p-6 max-w-xl mx-auto my_dark dark items-center"><br><br>
         <div class="max-w-xl bg-amber-50 justify-center text-center">
+            <h1>hello world!</h1>
             @foreach($data as $it)
                 <h1 class="font-bold">{{ $it }}</h1>
             @endforeach
